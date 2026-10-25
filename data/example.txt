@@ -1,0 +1,29 @@
+Retrieval-Augmented Generation, usually called RAG, is a technique that combines
+information retrieval with a language model.
+
+In a basic RAG system, documents are first split into smaller chunks. Each chunk
+is converted into a numerical representation called an embedding. The embeddings
+are stored in a vector database.
+
+When a user asks a question, the question is also converted into an embedding.
+The system searches the vector database for chunks whose meaning is similar to
+the question.
+
+The most relevant chunks are retrieved and added to the language model prompt.
+The language model then answers using the retrieved context.
+
+RAG is useful when a language model needs to answer questions about private,
+recent, specialized, or frequently changing information.
+
+Chunk size matters because very large chunks can include too much unrelated
+information, while very small chunks can lose useful context.
+
+Embedding models are important because they determine how text meaning is
+represented as vectors. Similar ideas should ideally have similar vectors.
+
+FAISS is a library for efficient similarity search over vectors. It is often
+used for local experiments and small RAG systems.
+
+Retrieval quality is one of the most important parts of a RAG system. If the
+retriever selects irrelevant chunks, even a strong language model may produce
+a poor answer.
