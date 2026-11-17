@@ -14,7 +14,6 @@ import faiss
 import numpy as np
 import requests
 from pypdf import PdfReader
-from sentence_transformers import SentenceTransformer
 
 DEFAULT_INDEX_DIR = Path("storage")
 DEFAULT_EMBEDDING_MODEL = "sentence-transformers/all-MiniLM-L6-v2"
@@ -26,6 +25,8 @@ _embedding_model = None
 def get_embedding_model(model_name: str = DEFAULT_EMBEDDING_MODEL):
     global _embedding_model
     if _embedding_model is None:
+        from sentence_transformers import SentenceTransformer
+
         _embedding_model = SentenceTransformer(model_name)
     return _embedding_model
 
